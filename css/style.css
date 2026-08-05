@@ -1,0 +1,955 @@
+/* 1. Variáveis */
+:root {
+    /*  Paleta de Cores Principal */
+    --cor-fundo: #FAFAFA;
+    --cor-texto-escuro: #001025;  
+    --cor-destaque: #F2A900;       
+    --cor-sucesso: #A3EABB;        
+    --cor-secundaria-azul: #79B6B8;
+    --cor-erro: #E53E3E;
+
+    /* Cores Adicionais */
+    --cor-progresso: #2ec4b6;
+    --cor-semanal: #3b82f6;
+    --cor-especial: #ff9f1c;
+    --cor-cinzento-escuro: #64748b;
+    --cor-cinzento-claro: #cbd5e1;
+    --cor-cinzento-muito-claro: #e2e8f0;
+    --cor-cinzento-quase-branco: #eef2f5;
+    --cor-vermelho-claro: #fee2e2;
+    --cor-verde-claro: #d1fae5;
+    --cor-verde-escuro: #065f46;
+    --cor-vermelho-escuro: #991b1b;
+    --cor-vermelho: #ef4444;
+    --cor-azul-escuro-hero: #0b2545;
+    --cor-label: #475569;
+    --cor-branco: #ffffff;
+
+    /* Cores de Hover */
+    --hover-principal: #CF9200;
+    --hover-secundario: #5C8989;
+    --hover-admin: #69bd85;
+
+    /* Tipografia */
+    --fonte-titulos: 'Poppins', sans-serif;
+    --fonte-corpo: 'Inter', sans-serif;
+}
+/* 2. Reset*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*3. Tipografia*/
+
+body {
+    background-color: var(--cor-fundo);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--cor-texto-escuro) ;
+    font-family: var(--fonte-titulos);
+}
+
+p{
+        color:var(--cor-texto-escuro);
+        font-family: var(--fonte-corpo);
+}
+
+/*4. Botões*/
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--fonte-corpo);
+    font-weight: 500;
+    font-size: 16px;
+    padding: 14px 28px;
+    min-height: 48px;
+    border: none;
+    border-radius: 8px; 
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background-color: var(--cor-destaque);
+    color: var(--cor-fundo); 
+}
+.btn-primary:hover {
+    background-color: var(--hover-principal);
+}
+
+.btn-secondary {
+    background-color: var(--cor-secundaria-azul);
+    color: var(--cor-fundo);
+}
+.btn-secondary:hover {
+    background-color: var(--hover-secundario);
+}
+
+.btn-admin {
+    background-color: var(--cor-sucesso);
+    color: var(--cor-texto-escuro);
+}
+.btn-admin:hover {
+    background-color: var(--hover-admin);
+}
+
+ .btn-top{
+     background-color:var(--cor-destaque); 
+     z-index: 1050; 
+     width: 80px; 
+     height: 80px; 
+     border-radius: 50%; 
+     font-size: 18px; 
+     transition: transform 0.2s;
+ }
+ 
+ .btn-top:hover{
+    background-color: var(--hover-principal);
+ }
+
+/* 5. Navbar */
+nav{
+    background-color: var(--cor-fundo);
+}
+
+/*6. Footer*/
+
+.main-footer {
+    font-family: var(--fonte-corpo);
+    width: 100%;
+    margin-top: 0;
+    padding-top: 0;
+    background-color: var(--cor-texto-escuro);
+
+}
+
+.social-circle {
+    width: 42px;
+    height: 42px;
+    background-color: var(--cor-texto-escuro); 
+    color: var(--cor-fundo);
+    border-radius: 50%; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.social-circle:hover {
+    background-color: var(--cor-destaque);
+    color: var(--cor-texto-escuro);
+    transform: translateY(-3px);
+}
+
+
+/*7. Formulários*/
+.form-control, .form-select {
+    font-family: var(--fonte-corpo);
+    padding: 12px 16px;
+    border-radius: 8px;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto-escuro);
+    transition: all 0.2s ease;
+}
+
+
+.max-width-350 {
+    max-width: 350px;
+}
+
+.support-form-box {
+    padding: 45px 0px 35px 0px; 
+    border-radius: 0px;
+    box-shadow: none ;
+    border: none ; 
+    background: var(--cor-fundo); 
+    padding: 35px; border-radius: 12px;
+    
+}
+
+.support-form-box label {
+    color: var(--cor-fundo); 
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+/* Estilos da Coluna da Direita (Formulário e Mascote) */
+.support-form-wrapper {
+    flex: 1;
+    min-width: 350px;
+    max-width: 550px;
+    position: relative;
+    margin-top: 40px; /* Espaço para o mascote não cortar no topo */
+}
+
+/* Posicionamento do Mascote */
+.mascot-wrapper {
+    position: absolute;
+    top: -55px;
+    right: 25px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 10;
+}
+
+/* Balão de fala da Coruja */
+.mascot-bubble {
+    background: var(--cor-destaque); 
+    color: var(--cor-fundo);
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 12px;
+    border-bottom-right-radius: 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    white-space: nowrap;
+}
+
+/* Imagem da Coruja */
+.mascot-img {
+    width: 65px;
+    height: auto;
+    filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.25));
+}
+
+
+.admin-form{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.admin-form label {
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--cor-texto-escuro);
+    margin-bottom: 6px;
+}
+
+.admin-form input[type="text"],
+.admin-form input[type="number"],
+.admin-form select,
+.admin-form textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--cor-secundaria-azul);
+    border-radius: 6px;
+    background: var(--cor-fundo);
+    color: var(--cor-texto-escuro);
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.admin-form input:focus, .admin-form select:focus, .admin-form textarea:focus {
+    border-color: var(--hover-secundario);
+    outline: none;
+    background: var(--cor-fundo);
+}
+
+/*8. Cards de Livros*/
+.contact-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 18px;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    max-width: 380px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-icon {
+    font-size: 26px;
+}
+
+.card-text span {
+    font-size: 12px;
+    color: var(--cor-secundaria-azul);
+    display: block;
+    margin-bottom: 2px;
+}
+
+.card-text a {
+    color:var(--cor-texto-escuro);
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.card-text strong {
+    color:var(--cor-texto-escuro);
+    font-size: 15px;
+}
+
+/*  CARTÕES DE MISSÕES */
+.challenges-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.challenge-card {
+    background: var(--cor-fundo);
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    border-left: 6px solid var(--cor-fundo); 
+}
+
+/* Cores das Bordas por Tipo de Missão */
+.challenge-card.daily { border-left-color: var(--cor-progresso); }
+.challenge-card.weekly { border-left-color: var(--cor-semanal); }
+.challenge-card.special { border-left-color: var(--cor-especial); }
+
+.challenge-type-badge {
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+    color: var(--cor-fundo);
+    background:var(--cor-secundaria-azul);
+}
+.challenge-card.daily .challenge-type-badge { background: var(--cor-progresso); }
+.challenge-card.weekly .challenge-type-badge { background: var(--cor-semanal); }
+.challenge-card.special .challenge-type-badge { background: var(--cor-especial); }
+
+
+.challenge-details {
+    margin: 0 0 6px 0;
+    color: var(--cor-texto-escuro);
+    font-size: 18px;
+}
+
+
+.challenge-progress-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.mini-progress-bar {
+    background: var(--cor-fundo);
+    width: 120px;
+    height: 6px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.mini-fill {
+    background: var(--cor-progresso);
+    height: 100%;
+}
+
+.progress-numeric {
+    font-size: 12px;
+    color:var(--cor-secundaria-azul);
+    font-weight: bold;
+}
+
+/* Zona de Resgate / Botão */
+.challenge-reward-zone {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 110px;
+}
+
+.reward-points {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--cor-progresso);
+}
+
+/*9. Carrosséis*/
+.categoria-container {
+    padding: 20px 16px;
+}
+
+.carrossel-horizontal {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 16px;
+    padding-bottom: 15px;
+}
+
+.carrossel-horizontal::-webkit-scrollbar {
+    display: none;
+}
+/* 10. conteiners*/ 
+.fundo{
+    background-image: linear-gradient(to bottom, rgba(242, 169, 0, 0.904), rgba(255, 255, 255, 0.1)), url('../imagens/livro-pilha.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 85vh;
+    align-items: center;
+    padding: 60px 20px;
+    box-sizing: border-box;  
+}
+
+ .fundoB{
+    background-image: linear-gradient(to bottom,rgba(163, 238, 187, 0.562), rgba(255, 255, 255, 0.1)), url('../imagens/livroh-garden.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 85vh;
+    align-items: center;
+    padding: 60px 20px;
+    box-sizing: border-box;  
+}
+
+    .fundoC{
+        background-color: var(--cor-secundaria-azul);
+        background-size: cover;
+        background-position: center;
+        min-height: 85vh;
+        align-items: center;
+        padding: 60px 20px;
+        box-sizing: border-box;  
+    }
+
+.support-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
+}
+/*Estilos da Coluna da Esquerda */
+.support-info {
+    flex: 1;
+    min-width: 320px;
+    color: var(--cor-fundo);
+}
+
+
+.badge-status {
+    background-color: #2ec4b6;
+    color: var(--cor-fundo);
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.support-title {
+    font-size: 42px;
+    margin: 0 0 20px 0;
+    font-weight: 700;
+    color: var(--cor-texto-escuro);
+}
+
+.support-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--cor-texto-escuro);
+    margin-bottom: 35px;
+    max-width: 450px;
+}
+/*11. Página de Contactos*/
+.support-section {
+    background-image: linear-gradient(to bottom, var(--cor-secundaria-azul), rgba(255, 255, 255, 0.8)), url('../imagens/livro-s2.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    padding: 60px 20px;
+    box-sizing: border-box;
+}
+/*12. Página de Desafios*/
+.challenges-section {
+    background-color:var(--cor-fundo);
+    padding: 50px 20px;
+    min-height: 100vh;
+}
+
+.challenges-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/*  CARD DE PROGRESSO DO UTILIZADOR*/
+.user-progress-card {
+    background: var(--cor-texto-escuro); 
+    color: var(--cor-fundo);
+    border-radius: 16px;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 50px;
+    box-shadow: 0 8px 24px rgba(11, 37, 69, 0.15);
+}
+
+.avatar-emoji {
+    font-size: 40px;
+    background: var(--cor-texto-escuro);
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.user-avatar-zone{
+    margin: 0 0 5px 0;
+    font-size: 22px;
+}
+
+.user-avatar-zone {
+    margin: 0;
+    color: var(--cor-fundo);
+}
+
+.progress-bar-zone {
+    flex-grow: 1;
+    max-width: 350px;
+}
+
+.progress-text {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 6px;
+    color: var(--cor-fundo);
+}
+
+.progress-bar-bg {
+    background: rgba(255, 255, 255, 0.2);
+    height: 12px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    background: var(--cor-progresso);
+    height: 100%;
+    border-radius: 10px;
+}
+
+.wallet-zone {
+    text-align: center;
+    background: var(--cor-texto-escuro);
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.wallet-label {
+    display: block;
+    font-size: 12px;
+    color: var(--cor-fundo);
+    margin-bottom: 4px;
+}
+
+.wallet-amount {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--cor-destaque);
+}
+
+.challenges-header {
+    margin-bottom: 30px;
+}
+
+.challenges-header {
+    color: var(--cor-texto-escuro);
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+
+/* CARTÕES DE MISSÕES */
+.challenges-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.challenge-card {
+    background: var(--cor-fundo);
+    border-radius: 12px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    border-left: 6px solid var(--cor-fundo);
+}
+/*13. Dashboard Admin*/
+
+.admin-dashboard-layout {
+    display: flex;
+    min-height: 90vh;
+    background-color:var(--cor-fundo);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* BARRA LATERAL (SIDEBAR) */
+.admin-sidebar {
+    width: 260px;
+    background: var(--cor-texto-escuro); /* Azul escuro principal */
+    color: var(--cor-fundo);
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.admin-profile-summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--cor-texto-escuro);
+    padding-bottom: 20px;
+}
+
+
+.admin-profile-summary p {
+    margin: 2px 0 0 0;
+    font-size: 12px;
+    color: var(--hover-admin);
+    font-weight: bold;
+}
+
+/* Itens do Menu Lateral */
+.admin-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.admin-nav-item {
+    color: var(--cor-texto-escuro);
+    text-decoration: none;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.admin-nav-item:hover {
+    color: var(--hover-admin);
+    border-left: 4px solid var(--hover-admin);
+}
+
+/*  ÁREA DE CONTEÚDO (DIREITA) */
+.admin-content-area {
+    flex: 1;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.admin-card-box {
+    background: var(--cor-fundo);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+    margin-bottom: 40px; 
+    border-top: 4px solid var(--cor-destaque);
+}
+
+.admin-box-header {
+    border-bottom: 1px solid var(--cor-fundo);
+    padding-bottom: 1px;
+    margin-bottom: 1px;
+}
+
+.review-item-card{
+    background: var(--cor-fundo);
+    border-radius: 8px; 
+    padding: 20px; 
+    border-left: 4px solid var(--cor-secundaria-azul); 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: flex-start; 
+    gap: 20px; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.01);
+}
+
+
+/*14. Responsividade*/
+@media (max-width: 768px) {
+    .admin-dashboard-layout { flex-direction: column; }
+    .admin-sidebar { width: 100%; }
+    .admin-form .support-form-box { flex-direction: column; gap: 0; }
+}
+
+/* classes uteis*/
+.error-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--cor-fundo);
+    color: var(--cor-erro);
+    border: 1px solid var(--cor-erro);
+    border-left: 5px solid  var(--cor-erro);
+    padding: 16px 20px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 25px 0;
+    box-shadow: 0 3px 8px rgba(0,0,0,.05);
+}
+
+.sucesso-message{
+    background:var(--cor-fundo); 
+    color:var(--cor-sucesso); 
+    padding: 15px; 
+    border-radius: 8px; 
+    font-size: 14px; 
+    margin-bottom: 25px; 
+    font-weight: bold;
+}
+
+.tabela{
+         width: 100%; 
+         border-collapse: collapse; 
+         text-align: left; 
+         font-size: 14px;
+         overflow-x: auto;
+}
+
+.box{
+   flex: 1; 
+   min-width: 420px; 
+   background: var(--cor-fundo); 
+   box-shadow: 0 4px 15px rgba(0,0,0,0.04); 
+   padding: 35px;
+   border-radius: 12px; 
+   border-top: 4px solid var(--cor-secundaria-azul);
+   box-sizing: border-box;
+}
+
+
+/* Mensagem informativapk */
+.info-box {
+   background:var(--cor-fundo); 
+   color: var(--cor-secundaria-azul); 
+   padding: 15px; 
+   border-radius: 8px; 
+   font-size: 14px; 
+   margin-bottom: 30px; 
+   text-align: center; 
+   font-weight: bold;
+}
+
+
+/* --------------------------------------------------
+   Classes adicionadas para remover estilos inline
+   (hero, forms, carrinho, admin e carrossel)
+   -------------------------------------------------- */
+
+/* Hero */
+.hero-banner { background-image: url('../imagens/livroh-folha-seca.jpg'); background-position: center; background-size: cover; background-repeat: no-repeat; min-height: 400px; }
+.hero-overlay { background-color: rgba(0, 16, 37, 0.75); z-index: 1; position:absolute; top:0; left:0; right:0; bottom:0; }
+.hero-content { position: relative; z-index: 2; }
+.hero-level-box { background-color: var(--cor-texto-escuro); }
+.level-progress { height: 8px; width: 150px; margin: 0 auto; }
+.level-progress .progress-bar { background-color: var(--cor-destaque); }
+.level-label { font-size: 14px; color: var(--cor-fundo); }
+.level-small { color: rgba(250, 250, 250, 0.7); font-size: 12px; }
+.hero-badge { background-color: var(--cor-sucesso); font-size: 14px; }
+.hero-owl { color: var(--cor-secundaria-azul); }
+.hero-highlight { color: var(--cor-destaque); }
+.hero-lead { color: rgba(250,250,250,0.9); }
+
+/* Layout helpers */
+.single-book-section { padding: 60px 20px; min-height: 85vh; display: flex; align-items: center; }
+.single-book-container { width: 100%; max-width: 950px; margin: 0 auto; }
+.flex-wrap-center { display: flex; gap: 40px; flex-wrap: wrap; justify-content: center; width: 100%; }
+
+/* Forms */
+.form-field { display: flex; flex-direction: column; margin-bottom: 20px; }
+.input-form { width: 100%; padding: 10px; border: 1px solid var(--cor-cinzento-claro); border-radius: 6px; box-sizing: border-box; }
+.label-form { font-size: 13px; font-weight: bold; color: var(--cor-label); margin-bottom: 6px; }
+.form-note { color: var(--cor-secundaria-azul); }
+.muted-small { color: var(--cor-cinzento-escuro); font-size: 13px; margin: 0; }
+.js-error-message { display: none; background: var(--cor-vermelho-claro); color: var(--cor-vermelho-escuro); padding: 12px; border-radius: 6px; font-size: 13px; font-weight: bold; margin-bottom: 20px; text-align: center; }
+
+/* Admin */
+.admin-logout { color: var(--cor-vermelho); }
+.estado-pago, .estado-enviado, .estado-outro { color: var(--cor-branco); padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; text-transform: uppercase; display: inline-block; }
+.estado-pago { background: var(--cor-progresso); }
+.estado-enviado { background: var(--cor-semanal); }
+.estado-outro { background: var(--cor-cinzento-escuro); }
+
+/* Catalog / Carrinho */
+.catalog-container { max-width: 800px; margin: 0 auto; }
+.catalog-header { text-align: left; margin-bottom: 30px; }
+.alert-success { background: var(--cor-verde-claro); color: var(--cor-verde-escuro); padding: 15px; border-radius: 8px; font-size: 15px; margin-bottom: 25px; text-align: center; font-weight: bold; }
+.alert-error { background: var(--cor-vermelho-claro); color: var(--cor-vermelho-escuro); padding: 12px; border-radius: 6px; font-weight: bold; margin-bottom: 20px; }
+.carrinho-wrapper { display: flex; flex-direction: column; gap: 20px; }
+.book-card { display: flex !important; flex-direction: row !important; align-items: center; padding: 20px; background: var(--cor-branco); border-radius: 12px; gap: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+.book-cover { height: 110px !important; flex: 0 0 80px; background: none; }
+.book-cover img { height: 100%; object-fit: cover; border-radius: 6px; }
+.book-info { padding: 0 !important; flex: 1; }
+.book-title { margin:0 0 5px 0; font-size:17px; color:var(--cor-azul-escuro-hero); text-align:left; text-shadow:none; }
+.book-cost { font-size: 16px; color: var(--cor-azul-escuro-hero); font-weight:bold; }
+.book-quantity { display: block; color: var(--cor-cinzento-escuro); margin-top: 4px; font-weight:bold; }
+.btn-remove { background: var(--cor-vermelho); text-decoration: none; padding: 8px 12px; font-size: 12px; color: var(--cor-branco); font-weight: bold; border-radius: 6px; display: inline-block; }
+.discount-box { background: var(--cor-branco); padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); border-left: 5px solid var(--cor-especial); }
+.input-small { padding:10px; border:1px solid var(--cor-cinzento-claro); border-radius:6px; max-width:200px; }
+.btn-apply { margin:0; padding:10px 20px; font-size:14px; width:auto; border-radius:6px; color:var(--cor-branco); font-weight:bold; border:none; background:var(--cor-especial); cursor:pointer; }
+.summary-box { background: var(--cor-branco); padding: 30px; margin-top: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); }
+.summary-row { display:flex; justify-content:space-between; color:var(--cor-cinzento-escuro); font-size:15px; border-bottom: 1px solid var(--cor-cinzento-quase-branco); padding-bottom: 15px; margin-bottom: 15px; }
+.summary-total { display:flex; justify-content:space-between; align-items:center; margin-top:5px; }
+.summary-actions { display:flex; gap:15px; flex-wrap:wrap; margin-top:15px; }
+.summary-discount { color: var(--cor-vermelho); font-size:15px; font-weight:bold; display:flex; justify-content:space-between; }
+.empty-cart-box { background: var(--cor-branco); text-align: center; padding: 50px; }
+.empty-emoji { font-size: 50px; }
+.discount-form { display:flex; gap:15px; align-items:center; }
+.support-form-box--transparent { background-color: transparent; }
+
+/* Index / Carrossel */
+.section-title { color: var(--cor-azul-escuro-hero); }
+#carrosselLivrosPagos { scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+.carousel-item-fixed { flex: 0 0 240px; width: 240px; }
+.price-16 { font-size: 16px; }
+
+/* Desafios / Progress bars (variações para fundos escuros) */
+.progress-text--light { display:flex; justify-content:space-between; font-size:13px; margin-bottom:6px; color: var(--cor-cinzento-muito-claro); }
+.mini-progress-bar--light { background: var(--cor-cinzento-muito-claro); width: 120px; height: 6px; border-radius: 4px; overflow: hidden; }
+.progress-numeric--muted { font-size: 12px; color: var(--cor-cinzento-escuro); font-weight: bold; }
+.challenge-details--grow { flex-grow: 1; }
+
+/* Perfil - Profile Card */
+.profile-card { background: var(--cor-texto-escuro); color: var(--cor-fundo); border-radius: 12px; padding: 25px; display: flex; justify-content: space-between; align-items: center; gap: 30px; margin-bottom: 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); flex-wrap: wrap; }
+.profile-meta { display: flex; align-items: center; gap: 15px; }
+.avatar-circle { font-size: 48px; background: rgba(255,255,255,0.1); width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.profile-balance { text-align: center; }
+.balance-label { display: block; font-size: 12px; color: rgba(250,250,250,0.7); margin-bottom: 5px; }
+.balance-amount { display: block; font-size: 22px; font-weight: bold; color: var(--cor-destaque); }
+.text-white { color: var(--cor-fundo); }
+
+/* Perfil - Orders List */
+.orders-list { display: flex; flex-direction: column; gap: 15px; }
+.order-item { background: var(--cor-fundo); border-radius: 10px; padding: 18px; display: flex; justify-content: space-between; align-items: center; gap: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-left: 5px solid var(--cor-cinzento-claro); flex-wrap: wrap; }
+.order-border-pago { border-left-color: var(--cor-progresso); }
+.order-border-enviado { border-left-color: var(--cor-semanal); }
+.order-border-outro { border-left-color: var(--cor-cinzento-escuro); }
+.order-id { display: block; font-size: 15px; font-weight: bold; color: var(--cor-texto-escuro); }
+.order-date { display: block; font-size: 12px; color: var(--cor-cinzento-escuro); margin-top: 4px; }
+.order-amount { font-size: 16px; color: var(--cor-texto-escuro); }
+.no-orders { text-align: center; color: var(--cor-cinzento-escuro); padding: 40px 20px; font-size: 15px; }
+
+
+
+/* -------------------------------
+   Mobile-first adjustments
+   - Vitrine: capas grandes, empilhadas
+   - Admin: reduzir paddings grandes e melhorar legibilidade
+   - Footer: remover espaços em excesso entre conteúdo e footer
+   ------------------------------- */
+@media (max-width: 768px) {
+    /* Priorizar mobile na vitrine */
+    /* Cartões ocupam 100% e imagem da capa fica alta e full width */
+    .row.row-cols-1 > .col {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
+    .card {
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 18px;
+    }
+
+    .book-image-wrapper, .book-image-wrapper-tall {
+        width: 100%;
+        /* altura responsiva: até 60vh, limitado a 480px para não ficar excessivo */
+        height: min(60vh, 480px);
+        display: block;
+        padding: 0;
+    }
+
+    .book-image-wrapper .book-image, .book-image-wrapper-tall .book-image, .book-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        border-radius: 0;
+    }
+
+    /* Remover truncamento agressivo para títulos no mobile (apresentar em linhas completas) */
+    .card-title-small, .card-title {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: unset;
+        font-size: 18px;
+    }
+
+    /* Tornar o corpo do cartão mais compacto */
+    .card-body { padding: 14px; }
+
+    /* Footer / espaçamentos */
+    main, .main-footer, footer {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    .main-footer {
+        padding-top: 12px !important;
+    }
+
+    .main-footer .container, footer .container {
+        padding-top: 0 !important;
+        padding-bottom: 8px !important;
+    }
+
+    /* Sub-footer compacto */
+    .sub-footer {
+        padding-top: 8px !important;
+        padding-bottom: 8px !important;
+    }
+
+    /* Admin: reduzir paddings e tornar seções empilhadas mais compactas */
+    .admin-content-area { padding: 18px !important; }
+    .admin-card-box { padding: 18px !important; margin-bottom: 14px !important; }
+    .support-form-box { padding: 14px !important; }
+    .admin-sidebar { padding: 16px !important; }
+
+    /* Tabelas: evitar overflow vertical grande */
+    .tabela { font-size: 13px; }
+
+    /* Botão voltar ao topo: ajustar para mobile se estiver sobrepondo conteúdo */
+    .btn-top { width: 64px; height: 64px; right: 12px; bottom: 12px; }
+}
+
+
