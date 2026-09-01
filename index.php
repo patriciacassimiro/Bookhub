@@ -11,6 +11,42 @@ include 'includes/conexao.php';
     LIMIT 12
     ");
     ?>
+    <?php
+// 1. LIGAÇÃO À BASE DE DADOS E CONTROLO DE SESSÃO
+
+if (!isset($_SESSION)) { session_start(); }
+
+// 2. BUSCAR OS PONTOS REAIS DO UTILIZADOR LOGADO
+
+$utilizador_id = isset($_SESSION['utilizador_id']) ? $_SESSION['utilizador_id'] : 1; 
+
+$query_user = mysqli_query($conexao, "SELECT pontos FROM utilizadores WHERE id = $utilizador_id");
+$row_user = mysqli_fetch_assoc($query_user);
+$pontos_atuais = $row_user ? intval($row_user['pontos']) : 0;
+
+// 3. SISTEMA DE NÍVEIS, MASCOTES E VANTAGENS DINÂMICAS
+if ($pontos_atuais >= 2500) {
+    $nome_nivel = "Mestre Literário";
+    $imagem_coruja = "coruja-oculos.png";      // Coruja com óculos
+    $meta_proximo_nivel = 5000;               // Próxima meta fictícia
+    $cor_badge = "bg-success";
+} elseif ($pontos_atuais >= 1000) {
+    $nome_nivel = "Devorador de Livros";
+    $imagem_coruja = "coruja-piscando.png";   // Coruja a piscar o olho
+    $meta_proximo_nivel = 2500;
+    $cor_badge = "bg-warning text-dark";
+} else {
+    $nome_nivel = "Iniciante";
+$imagem_coruja = "fundo-escuro.png";    // Coruja normal
+    $meta_proximo_nivel = 1000;
+    $cor_badge = "bg-secondary";
+}
+
+// 4. CÁLCULO DA PERCENTAGEM DA BARRA DE XP
+$percentagem_xp = min(100, ($pontos_atuais / $meta_proximo_nivel) * 100);
+$faltam_pontos = max(0, $meta_proximo_nivel - $pontos_atuais);
+?>
+
 <main>
     
     <section>
@@ -36,19 +72,43 @@ include 'includes/conexao.php';
                     </div>
                 </div>
 
-                <div class="col-12 col-md-4 text-center">
-                    <div class="p-4 rounded-4 border border-secondary border-opacity-25 d-inline-block text-white hero-level-box">
-                        <i class="fa-solid fa-owl display-1 mb-2 hero-owl"></i>
-                        <div class="mt-2">
-                            <p class="fw-bold mb-1 level-label text-white">Nível Atual: <span class="text-uppercase text-warning">Iniciante</span></p>
-                            <!-- Barra de progresso -->
-                            <div class="progress bg-dark bg-opacity-50 level-progress">
-                                <div class="progress-bar" role="progressbar" style="width: 10%;" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <small class="d-block mt-2 level-small">Faltam 350 pts para subir!</small>
-                        </div>
-                    </div>
-                </div>
+                <!-- Coluna da Mascote/Status (Direita) - Agora 100% Dinâmica -->
+<div class="col-12 col-md-4 text-center">
+    <div class="p-4 rounded-4 border border-secondary border-opacity-25 d-inline-block text-white" 
+         style="background-color: var(--cor-texto-escuro);">
+        
+        <!-- Imagem da coruja muda de acordo com o nível do utilizador na Base de Dados -->
+   <img src="imagens/<?php echo $imagem_coruja; ?>" alt="Mascote Coruja BookHub" class="img-fluid mb-2 animate-flutuar" style="max-height: 90px;">
+
+        
+        <div class="mt-2">
+            <p class="fw-bold mb-1" style="font-size: 14px; color: var(--cor-fundo);">
+                Nível: <span class="badge <?php echo $cor_badge; ?> text-uppercase"><?php echo $nome_nivel; ?></span>
+            </p>
+            
+            <!-- Texto com os pontos e XP real -->
+            <small class="d-block mb-1 opacity-75">XP: <?php echo $pontos_atuais; ?> / <?php echo $meta_proximo_nivel; ?></small>
+            
+            <!-- Barra de progresso com largura controlada pelo PHP -->
+            <div class="progress bg-dark bg-opacity-50" style="height: 8px; width: 150px; margin: 0 auto;">
+                <div class="progress-bar" role="progressbar" 
+                     style="width: <?php echo $percentagem_xp; ?>%; background-color: var(--cor-destaque);" 
+                     aria-valuenow="<?php echo $percentagem_xp; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            
+            <?php if ($faltam_pontos > 0): ?>
+                <small class="d-block mt-2" style="color: rgba(250, 250, 250, 0.7); font-size: 11px;">
+                    Faltam <?php echo $faltam_pontos; ?> pts para subir!
+                </small>
+            <?php else: ?>
+                <small class="d-block mt-2 text-warning" style="font-size: 11px;">
+                    👑 Nível Máximo Atingido!
+                </small>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+
 
             </div>
         </div>

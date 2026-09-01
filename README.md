@@ -45,13 +45,31 @@ Siga o passo a passo para configurar o ambiente de desenvolvimento local:
 5. **Executar a Plataforma:**
    Abra o seu navegador de internet e aceda ao endereço:
    
-http://localhost/bookhub/index.php
+## Screenshots
 
-## ⚙️ Executando os testes
+### Página Inicial
 
-Os testes estruturais do sistema garantem que as regras de negócio críticas definidas no briefing do projeto funcionam perfeitamente.
+![Página Inicial](Screenshots-bookhub/home.png)
 
-### 🔩 Analisar os testes de ponta a ponta
+### Pesquisa de Livros
+
+![Pesquisa de Livros](Screenshots-bookhub/barra-pesquisa.png)
+
+### Carrinho de compras
+
+![Carrinho de compras](Screenshots-bookhub/carrinho.png)
+
+### Painel Do Administrador 
+
+![Painel do Administrador](Screenshots-bookhub/painel-adm.png)
+
+### Página de contatos
+![Página de contatos](Screenshots-bookhub/suporte.png)
+
+### Vitrine de livros
+![Vitrine de livros](Screenshots-bookhub/vitrine.png)
+
+### 🔩 Analisar os testes
 
 * **Teste de Maioridade (+18) no Checkout:** O ficheiro `js/validacao-checkout.js` barra tentativas de submissão de encomendas caso a data de nascimento inserida corresponda a um menor de 18 anos.
 * **Teste de Atribuição de Pontos por Compra:** Ao concluir uma compra simulada no formulário de `checkout.php`, o sistema calcula o multiplicador correspondente ao nível de XP do utilizador, atualiza o saldo na tabela `utilizadores` e limpa os itens do carrinho na base de dados.
